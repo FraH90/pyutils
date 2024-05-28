@@ -1,0 +1,2 @@
+python autopackages.py
+pause

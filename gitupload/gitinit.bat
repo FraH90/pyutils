@@ -1,0 +1,2 @@
+python gitinit.py
+pause
