@@ -41,7 +41,7 @@ def main():
     ask_prompt = input(f"Ok, let's proceed...")
 
     # Set the remote origin
-    run_git_command(f'git remote add origin git@github.com:{username}/{repo_name}.git')
+    run_git_command(f'git remote add origin https://github.com/{username}/{repo_name}.git')
 
     # Ask user for .gitignore options
     # Remember to NOT add the .git folder here (it would break git)
