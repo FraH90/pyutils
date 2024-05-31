@@ -68,7 +68,10 @@ def main():
     with open('.gitignore', 'w') as gitignore_file:
         for item in ignore_list:
             gitignore_file.write(item.strip() + '\n')
-
+    
+    # Change branch to main
+    run_git_command('git branch -M main')
+    
     # Add all files in the current folder to the staging area
     run_git_command('git add *')
 
