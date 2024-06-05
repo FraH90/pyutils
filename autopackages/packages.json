@@ -1,1 +1,17 @@
-["pybluez", "pygame", "schedule"]
+["pybluez", "pygame", "schedule"]{
+    "adjustText": "Adjust text to avoid overlap in matplotlib plots.",
+    "colorama": "Cross-platform colored terminal text.",
+    "google-api-python-client": "Python client library for Google APIs.",
+    "google-auth": "Google authentication library.",
+    "huggingface-hub": "Client library to interact with the Hugging Face Hub.",
+    "manimgl": "Mathematical animation engine.",
+    "matplotlib": "Comprehensive library for creating static, animated, and interactive visualizations.",
+    "mplcursors": "Interactive data selection cursors for Matplotlib.",
+    "openai": "Python client library for OpenAI's API.",
+    "PyQt5": "Comprehensive set of Python bindings for Qt libraries.",
+    "pytz": "World timezone definitions, modern and historical.",
+    "pywebostv": "Library to interact with LG webOS TVs.",
+    "pywin32": "Python extensions for Windows.",
+    "scipy": "Scientific and technical computing library.",
+    "vimeo-downloader": "Download videos from Vimeo."
+}
