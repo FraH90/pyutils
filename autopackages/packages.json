@@ -1,4 +1,4 @@
-["pybluez", "pygame", "schedule"]{
+{
     "adjustText": "Adjust text to avoid overlap in matplotlib plots.",
     "colorama": "Cross-platform colored terminal text.",
     "google-api-python-client": "Python client library for Google APIs.",
