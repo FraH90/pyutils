@@ -66,8 +66,8 @@ def main():
         sys.exit(1)
     
     with open(json_file, "r") as file:
-        package_list = json.load(file)
-    
+        package_list = list(package_dict.keys())
+        
     if not isinstance(package_list, list):
         print("JSON file should contain a list of packages.")
         sys.exit(1)
