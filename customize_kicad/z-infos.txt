@@ -1,0 +1,8 @@
+- The symbols are in the folder:
+C:\Program Files\KiCad\8.0\share\kicad\symbols
+
+- Kicad, at the first time that is initialized, copy the table-library from:
+C:\Program Files\KiCad\8.0\share\kicad\template\sym-lib-table
+
+- After the first start, the "custom" table that is user-specific (contains user customization, included pins maybe) is finded in:
+C:\Users\caterina\AppData\Roaming\kicad\8.0\sym-lib-table
