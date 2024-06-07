@@ -6,3 +6,8 @@ C:\Program Files\KiCad\8.0\share\kicad\template\sym-lib-table
 
 - After the first start, the "custom" table that is user-specific (contains user customization, included pins maybe) is finded in:
 C:\Users\caterina\AppData\Roaming\kicad\8.0\sym-lib-table
+
+
+SO, TODO: 
+- YOU NEED TO MODIFY BOTH THE TEMPLATE LIB-TABLE, AND THE USER-LIB TABLE.
+SAME MODIFICATIONS ON BOTH FILE.
