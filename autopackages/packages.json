@@ -13,5 +13,6 @@
     "pywebostv": "Library to interact with LG webOS TVs.",
     "pywin32": "Python extensions for Windows.",
     "scipy": "Scientific and technical computing library.",
-    "vimeo-downloader": "Download videos from Vimeo."
+    "vimeo-downloader": "Download videos from Vimeo.",
+    "wakeonlan": "Library to wake devices through LAN"
 }
