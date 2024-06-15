@@ -1,0 +1,6 @@
+"colorama": "Cross-platform colored terminal text.",
+"matplotlib": "Comprehensive library for creating static, animated, and interactive visualizations.",
+"PyQt5": "Comprehensive set of Python bindings for Qt libraries.",
+"pytz": "World timezone definitions, modern and historical.",
+"pywin32": "Python extensions for Windows.",
+"scipy": "Scientific and technical computing library."

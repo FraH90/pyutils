@@ -35,16 +35,24 @@ def select_python_installation(installations):
 def install_packages(python_executable, package_list):
     for package in package_list:
         try:
+            print(f"Message from autopackages.py script: installing {package}")
             subprocess.check_call([python_executable, "-m", "pip", "install", package])
-            print(f"Successfully installed {package}")
+            print(f"Message from autopackages.py script: successfully installed {package}")
+            print("**********************************************************************")
+            print()
         except subprocess.CalledProcessError as e:
             print(f"Failed to install {package}: {e}")
 
-def print_installed_packages():
+def print_installed_packages(python_executable):
     try:
-        output = subprocess.check_output([sys.executable, "-m", "pip", "list", "--format=json"], text=True)
+        output = subprocess.check_output([python_executable, "-m", "pip", "list", "--format=json"], text=True)
         installed_packages = json.loads(output)
-        installed_packages.sort(key=lambda x: datetime.strptime(x["installed"], "%Y-%m-%dT%H:%M:%S"))
+        
+        # Sorting by install date, if available. Otherwise, by name.
+        try:
+            installed_packages.sort(key=lambda x: datetime.strptime(x.get("install_date", ""), "%Y-%m-%dT%H:%M:%S"), reverse=True)
+        except:
+            installed_packages.sort(key=lambda x: x["name"])
         
         print("Installed packages (from newest to oldest):")
         for package in installed_packages:
@@ -66,14 +74,19 @@ def main():
         sys.exit(1)
     
     with open(json_file, "r") as file:
-        package_list = list(package_dict.keys())
-        
+        try:
+            package_dict = json.load(file)
+            package_list = list(package_dict.keys())
+        except json.JSONDecodeError:
+            print("Invalid JSON file format.")
+            sys.exit(1)
+
     if not isinstance(package_list, list):
         print("JSON file should contain a list of packages.")
         sys.exit(1)
     
     install_packages(python_executable, package_list)
-    print_installed_packages()
+    print_installed_packages(python_executable)
     
 if __name__ == "__main__":
     main()
