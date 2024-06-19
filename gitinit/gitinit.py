@@ -53,7 +53,7 @@ def main():
     elif git_host == 'gitlab':
         run_git_command(f'git remote add origin https://gitlab.com/{username}/{repo_name}.git')
     elif git_host == 'baltig':
-        run_git_command(f'git remote add origin https://baltig/{username}/{repo_name}.git')
+        run_git_command(f'git remote add origin https://baltig.infn.it/{username}/{repo_name}.git')
     
     # Ask user for .gitignore options
     # Remember to NOT add the .git folder here (it would break git)
