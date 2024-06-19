@@ -23,6 +23,13 @@ def main():
     useremail = input("Enter your GitHub email: ").strip()
     commit_message = input("Enter the commit message: ").strip()
 
+    # Ask for the preferred git host
+    git_host = input("Enter the git host (github/gitlab/baltig): ").strip().lower()
+
+    if git_host not in ['github', 'gitlab', 'baltig']:
+        print("Invalid git host. Please enter 'github', 'gitlab', or 'baltig'.")
+        return
+    
     # Change to the specified directory
     os.chdir(directory)
     
@@ -36,13 +43,18 @@ def main():
     # Get the local repository name (assumed to be the name of the current directory)
     repo_name = os.path.basename(os.getcwd())
     
-    # Remember the user to create a remote repository with the name "repo_name" on GitHub/GitLab, otherwise git remote add origin will fail
-    ask_prompt = input(f"Have you created a repository with name {repo_name} on your remote GIT account?")
+    # Prompt user to create a remote repository with the name "repo_name" on the chosen git host, otherwise git remote add origin will fail
+    input(f"Have you created a repository with name {repo_name} on your remote {git_host} account? Press Enter to continue...")
     ask_prompt = input(f"Ok, let's proceed...")
 
-    # Set the remote origin
-    run_git_command(f'git remote add origin https://github.com/{username}/{repo_name}.git')
-
+    # Set the remote origin based on the chosen git host
+    if git_host == 'github':
+        run_git_command(f'git remote add origin https://github.com/{username}/{repo_name}.git')
+    elif git_host == 'gitlab':
+        run_git_command(f'git remote add origin https://gitlab.com/{username}/{repo_name}.git')
+    elif git_host == 'baltig':
+        run_git_command(f'git remote add origin https://baltig/{username}/{repo_name}.git')
+    
     # Ask user for .gitignore options
     # Remember to NOT add the .git folder here (it would break git)
     default_gitignore = [
