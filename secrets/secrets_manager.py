@@ -130,17 +130,14 @@ class SecretsManager:
 
 # Usage example
 if __name__ == "__main__":
+    # Loading data from a JSON file and writing them directly into environment variable in encrypted form
     manager = SecretsManager()
-    
-    # Load secrets from a JSON file and encrypt them
     manager.load_from_json('secrets.json')
-    
-    # Add a new secret
+
+    # Add a new secret to environment variable crypted data
     manager.add_or_update_secret('new_api_key', 'abcdef123456')
-    
-    # Update an existing secret
     manager.add_or_update_secret('api_key', 'updated_key_value')
-    
+
     # Add multiple secrets at once
     new_secrets = {
         'database_url': 'postgres://user:pass@localhost/db',
@@ -149,7 +146,7 @@ if __name__ == "__main__":
     manager.add_or_update_multiple_secrets(new_secrets)
     
     # Remove a secret
-    # manager.remove_secret('old_key')
+    manager.remove_secret('old_key')
     
     # Retrieve a specific secret
     api_key = manager.get_secret('api_key')
