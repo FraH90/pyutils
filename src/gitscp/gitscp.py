@@ -1,7 +1,5 @@
-import os
 import subprocess
 import sys
-import io
 
 def is_git_repo():
     return subprocess.call(["git", "rev-parse", "--is-inside-work-tree"], stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL) == 0
@@ -12,8 +10,11 @@ def fetch_changes():
     print(result.stdout)
 
 def get_status():
-    result = subprocess.run(["git", "status", "--color=always"], capture_output=True, text=True)
-    return result.stdout
+    try:
+        result = subprocess.check_output(["git", "status"], stderr=subprocess.STDOUT, text=True)
+        return result.strip()
+    except subprocess.CalledProcessError as e:
+        return f"An error occurred while getting git status: {e.output}"
 
 def stage_changes():
     return input("\nDo you want to stage all changes? (y/n): ").lower() == 'y'
@@ -69,7 +70,7 @@ def main():
     print(status_output)
     print("------------------\n")
 
-    if "Your branch is up to date" not in status_output or "nothing to commit" not in status_output:
+    if status_output and ("Your branch is up to date" not in status_output or "nothing to commit" not in status_output):
         if stage_changes():
             stage_result = subprocess.run(["git", "add", "-A"], capture_output=True, text=True)
             print("\n--- Git Add Output ---")
