@@ -74,8 +74,8 @@ def main():
         if stage_changes():
             stage_result = subprocess.run(["git", "add", "-A"], capture_output=True, text=True)
             print("\n--- Git Add Output ---")
-            print(stage_result.stdout)
-            print(stage_result.stderr)
+            print(stage_result.stdout.strip())
+            print(stage_result.stderr.strip())
             print("-----------------------\n")
             commit_changes()
             push_changes()
