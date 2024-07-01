@@ -7,7 +7,11 @@ def is_git_repo():
 def fetch_changes():
     print("Fetching changes from remote...")
     result = subprocess.run(["git", "fetch"], capture_output=True, text=True)
-    print(result.stdout)
+    if result.returncode != 0:
+        print("Error fetching changes.")
+        print(result.stderr)
+    else:
+        print(result.stdout)
 
 def get_status():
     try:
@@ -24,7 +28,8 @@ def commit_changes():
     result = subprocess.run(["git", "commit", "-m", commit_message], capture_output=True, text=True)
     print("\n--- Git Commit Output ---")
     print(result.stdout)
-    print(result.stderr)
+    if result.returncode != 0:
+        print(result.stderr)
     print("-------------------------\n")
 
 def push_changes():
@@ -70,12 +75,13 @@ def main():
     print(status_output)
     print("------------------\n")
 
-    if status_output and ("Your branch is up to date" not in status_output or "nothing to commit" not in status_output):
+    if status_output and "nothing to commit, working tree clean" not in status_output:
         if stage_changes():
             stage_result = subprocess.run(["git", "add", "-A"], capture_output=True, text=True)
             print("\n--- Git Add Output ---")
             print(stage_result.stdout.strip())
-            print(stage_result.stderr.strip())
+            if stage_result.returncode != 0:
+                print(stage_result.stderr.strip())
             print("-----------------------\n")
             commit_changes()
             push_changes()
