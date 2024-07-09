@@ -1,0 +1,2 @@
+python secrets_manager.py
+pause

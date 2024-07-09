@@ -33,19 +33,6 @@ class CompanyAnalyzer:
         if not self.asset:
             self.asset = SecurityMaster.get_asset(self.symbol)
 
-    def get_name(self):
-        """
-        Get the name of the company.
-        """
-        self._get_asset_info()
-        return self.asset.name
-
-    def get_symbol(self):
-        """
-        Get the symbol of the company.
-        """
-        return self.symbol
-
     def get_metric(self, metric_name):
         """
         Get a specific financial metric for the company.
@@ -76,8 +63,8 @@ if __name__ == "__main__":
     analyzer = CompanyAnalyzer('AAPL')  # Example: Apple Inc.
 
     # Retrieve and print various metrics
-    print(f"Company Name: {analyzer.get_name()}")
-    print(f"Company Symbol: {analyzer.get_symbol()}")
+    print(f"Company Name: {analyzer.name()}")
+    print(f"Company Symbol: {analyzer.symbol()}")
     print(f"P/E Ratio: {analyzer.get_metric('PE_RATIO')}")
     print(f"Market Cap: {analyzer.get_metric('MARKET_CAP')}")
     print(f"Dividend Yield: {analyzer.get_metric('DIVIDEND_YIELD')}")

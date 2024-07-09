@@ -1,157 +1,137 @@
 import os
 import json
-import base64
-import secrets
-from cryptography.hazmat.primitives.ciphers.aead import AESGCM
-from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
-from cryptography.hazmat.backends import default_backend
-import winreg
+from secrets_vault import SecretsVault
+import datetime
+import shutil
 
-class SecretsManager:
-    def __init__(self, salt_path='salt.bin', env_var_name='ENCRYPTED_SECRETS'):
-        self.salt_path = salt_path
-        self.env_var_name = env_var_name
-        self.key = self._setup_encryption()
-        self.secrets_data = None
-        self._cached_encrypted = None
-
-    def _setup_encryption(self):
-        salt = self._get_or_create_salt()
-        password = self._get_or_create_password()
-        kdf = Scrypt(
-            salt=salt,
-            length=32,
-            n=2**20,  # High cost factor for increased security
-            r=8,
-            p=1,
-            backend=default_backend()
-        )
-        return kdf.derive(password)
-
-    def _get_or_create_salt(self):
-        try:
-            with open(self.salt_path, 'rb') as f:
-                return f.read()
-        except FileNotFoundError:
-            salt = os.urandom(16)
-            with open(self.salt_path, 'wb') as f:
-                f.write(salt)
-            return salt
-
-    def _get_or_create_password(self):
-        password_path = 'secret_password.bin'
-        try:
-            with open(password_path, 'rb') as f:
-                return f.read()
-        except FileNotFoundError:
-            password = secrets.token_bytes(32)  # 256-bit password
-            with open(password_path, 'wb') as f:
-                f.write(password)
-            return password
-
-    def _encrypt(self, data):
-        nonce = os.urandom(12)
-        aesgcm = AESGCM(self.key)
-        encrypted = aesgcm.encrypt(nonce, data.encode('utf-8'), None)
-        return base64.b64encode(nonce + encrypted).decode('utf-8')
-
-    def _decrypt(self, encrypted_data):
-        decoded = base64.b64decode(encrypted_data)
-        nonce, ciphertext = decoded[:12], decoded[12:]
-        aesgcm = AESGCM(self.key)
-        return aesgcm.decrypt(nonce, ciphertext, None).decode('utf-8')
-
-    def _set_windows_env_var(self, name, value):
-        try:
-            key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, 'Environment', 0, winreg.KEY_ALL_ACCESS)
-            winreg.SetValueEx(key, name, 0, winreg.REG_SZ, value)
-            winreg.CloseKey(key)
-        except Exception as e:
-            raise RuntimeError(f"Error setting environment variable: {e}")
-
-    def _get_windows_env_var(self, name):
-        try:
-            key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, 'Environment', 0, winreg.KEY_READ)
-            value, _ = winreg.QueryValueEx(key, name)
-            winreg.CloseKey(key)
-            return value
-        except FileNotFoundError:
-            return None
-
-    def encrypt_and_store(self, data):
-        json_data = json.dumps(data)
-        encrypted = self._encrypt(json_data)
-        self._cached_encrypted = encrypted
-        self._set_windows_env_var(self.env_var_name, encrypted)
-
-    def decrypt_and_load(self):
-        if self._cached_encrypted:
-            encrypted = self._cached_encrypted
+def merge_secrets(existing_secrets, new_secrets):
+    for service, data in new_secrets.get('services', {}).items():
+        if service in existing_secrets['services']:
+            existing_secrets['services'][service].update(data)
         else:
-            encrypted = self._get_windows_env_var(self.env_var_name)
-            if not encrypted:
-                raise ValueError(f'Environment variable "{self.env_var_name}" not found or empty.')
-            self._cached_encrypted = encrypted
+            existing_secrets['services'][service] = data
+    return existing_secrets
 
-        decrypted = self._decrypt(encrypted)
-        self.secrets_data = json.loads(decrypted)
+def write_secrets_from_json(vault):
+    json_file_path = input("Enter the path to your JSON file containing secrets: ")
+    
+    if not os.path.exists(json_file_path):
+        print(f"Error: File '{json_file_path}' not found.")
+        return
 
-    def get_secret(self, key):
-        if self.secrets_data is None:
-            self.decrypt_and_load()
-        return self.secrets_data.get(key)
-
-    def add_or_update_secret(self, key, value):
-        if self.secrets_data is None:
-            self.decrypt_and_load()
-        self.secrets_data[key] = value
-        self.encrypt_and_store(self.secrets_data)
-
-    def remove_secret(self, key):
-        if self.secrets_data is None:
-            self.decrypt_and_load()
-        if key in self.secrets_data:
-            del self.secrets_data[key]
-            self.encrypt_and_store(self.secrets_data)
-        else:
-            raise KeyError(f"Secret '{key}' not found.")
-
-    def load_from_json(self, json_file_path):
+    try:
         with open(json_file_path, 'r') as f:
-            data = json.load(f)
-        self.encrypt_and_store(data)
+            new_secrets = json.load(f)
+        
+        # Check if there are existing secrets
+        vault.decrypt_and_load()
+        if vault.secrets_data.get('services'):
+            choice = input("Existing secrets found. Do you want to (A)ppend new data or (O)verwrite? [A/O]: ").lower()
+            if choice == 'a':
+                vault.secrets_data = merge_secrets(vault.secrets_data, new_secrets)
+            elif choice == 'o':
+                vault.secrets_data = new_secrets
+            else:
+                print("Invalid choice. Operation cancelled.")
+                return
+        else:
+            vault.secrets_data = new_secrets
+        
+        # Encrypt and store updated secrets
+        vault.encrypt_and_store(vault.secrets_data)
+        print("Secrets have been successfully processed and stored in the environment variable.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
-    def add_or_update_multiple_secrets(self, new_secrets):
-        if self.secrets_data is None:
-            self.decrypt_and_load()
-        self.secrets_data.update(new_secrets)
-        self.encrypt_and_store(self.secrets_data)
+def manually_enter_secrets(vault):
+    # Check if there are existing secrets
+    vault.decrypt_and_load()
+    if vault.secrets_data.get('services'):
+        choice = input("Existing secrets found. Do you want to (A)ppend new data or (O)verwrite? [A/O]: ").lower()
+        if choice == 'o':
+            vault.secrets_data = {'services': {}}
+        elif choice != 'a':
+            print("Invalid choice. Operation cancelled.")
+            return
+    else:
+        vault.secrets_data = {'services': {}}
+    
+    while True:
+        service_name = input("Enter service name (or 'x' to finish): ")
+        if service_name.lower() == 'x':
+            break
+        
+        service_data = {}
+        fields = ['name', 'username', 'password', 'api_key', 'public_key', 'secret_key']
+        
+        for field in fields:
+            value = input(f"Enter {field} (leave empty for None): ")
+            service_data[field] = value if value else None
+        
+        # Ask for any additional fields
+        while True:
+            additional_field = input("Enter any additional field name (or press Enter to finish): ")
+            if not additional_field:
+                break
+            value = input(f"Enter value for {additional_field}: ")
+            service_data[additional_field] = value if value else None
+        
+        if service_name in vault.secrets_data['services']:
+            vault.secrets_data['services'][service_name].update(service_data)
+        else:
+            vault.secrets_data['services'][service_name] = service_data
+    
+    # Encrypt and store updated secrets
+    vault.encrypt_and_store(vault.secrets_data)
+    print("Secrets have been successfully updated, encrypted, and stored in the environment variable.")
 
 
-# Usage example
+def backup_secrets(vault):
+    try:
+        # Create a backup directory
+        backup_dir = f"secrets_backup_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}"
+        os.makedirs(backup_dir, exist_ok=True)
+
+        # Export and save secrets
+        secrets_json = vault.export_secrets()
+        with open(os.path.join(backup_dir, 'secrets_backup.json'), 'w') as f:
+            f.write(secrets_json)
+
+        # Backup configuration files
+        config_files = vault.get_saltpsw_path()
+        for file_type, file_path in config_files.items():
+            if os.path.exists(file_path):
+                shutil.copy2(file_path, os.path.join(backup_dir, f'{file_type}.bin'))
+            else:
+                print(f"Warning: {file_type} file not found at {file_path}")
+
+        print(f"Backup completed successfully. Backup directory: {backup_dir}")
+    except Exception as e:
+        print(f"An error occurred during backup: {e}")
+
+def main():
+    vault = SecretsVault.get_instance()
+
+    while True:
+        print("\nSecret Vault Operations:")
+        print("1. Write secrets from JSON file")
+        print("2. Manually enter secrets")
+        print("3. Backup secrets and configuration")
+        print("4. Exit")
+
+        choice = input("Enter your choice (1-4): ")
+
+        if choice == '1':
+            write_secrets_from_json(vault)
+        elif choice == '2':
+            manually_enter_secrets(vault)
+        elif choice == '3':
+            backup_secrets(vault)
+        elif choice == '4':
+            print("Exiting the program.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
 if __name__ == "__main__":
-    # Loading data from a JSON file and writing them directly into environment variable in encrypted form
-    manager = SecretsManager()
-    manager.load_from_json('secrets.json')
-
-    # Add a new secret to environment variable crypted data
-    manager.add_or_update_secret('new_api_key', 'abcdef123456')
-    manager.add_or_update_secret('api_key', 'updated_key_value')
-
-    # Add multiple secrets at once
-    new_secrets = {
-        'database_url': 'postgres://user:pass@localhost/db',
-        'aws_access_key': 'AKIAIOSFODNN7EXAMPLE'
-    }
-    manager.add_or_update_multiple_secrets(new_secrets)
-    
-    # Remove a secret
-    manager.remove_secret('old_key')
-    
-    # Retrieve a specific secret
-    api_key = manager.get_secret('api_key')
-    print(f"API Key: {api_key}")
-    
-    # Print all secrets
-    print("All secrets:")
-    print(json.dumps(manager.secrets_data, indent=2))
+    main()
