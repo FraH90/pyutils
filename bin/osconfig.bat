@@ -1,11 +1,10 @@
 @echo off
+REM Get the full path of the batch file
+set "BatchPath=%~dp0"
 REM Get the name of the currently executing batch file without the extension
-set BatchFileName=%~n0
-
-REM Navigate to the parent folder, then to src, and then to the folder with the batch file name substituted
-cd ..\src\%BatchFileName%
-
-REM Run the Python script with the same name as the batch file
-python %BatchFileName%.py
-
+set "BatchFileName=%~n0"
+REM Construct the full path to the Python script
+set "PythonScriptPath=%BatchPath%\..\src\%BatchFileName%\%BatchFileName%.py"
+REM Run the Python script with the full path
+python "%PythonScriptPath%"
 pause
