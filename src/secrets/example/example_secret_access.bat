@@ -1,0 +1,2 @@
+python example_secret_access.py
+pause

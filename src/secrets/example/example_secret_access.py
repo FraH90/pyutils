@@ -1,6 +1,11 @@
 from secrets_vault import SecretsVault
 import json
 
+# This example read the data from the secret vault (this presuppone that the environment variable contain already some data in it) and try to get the API kys relative
+# to some services. You can also dump the entire json structure, once u have access to the crypto credentials.
+# Note that the crypto credentials (salt file and psw file) are automatically loaded from the default location ~/.secrets_manager when the SecretsVault class is 
+# istantiated. If not present, they will be created and used as the new crypto credentials.
+
 def main():
     manager = SecretsVault.get_instance()
     
