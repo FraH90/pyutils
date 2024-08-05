@@ -1,0 +1,1 @@
+wsl -d Ubuntu google-chrome -user-data-dir=/var/tmp/private
