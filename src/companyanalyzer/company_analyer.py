@@ -2,14 +2,16 @@ import os
 from gs_quant.markets.securities import SecurityMaster
 from gs_quant.session import GsSession
 
-class CompanyAnalyzer:
+class AssetAnalyzer:
     def __init__(self, symbol):
         """
-        Initialize the CompanyAnalyzer with the company symbol.
+        Initialize the AssetAnalyzer with the ticker symbol.
         
         Args:
         - symbol (str): Company symbol (e.g., 'AAPL' for Apple).
         """
+        self.is_etf = None
+        self.is_stock = None
         self.symbol = symbol
         self.asset = None
         self.session = None
@@ -30,6 +32,7 @@ class CompanyAnalyzer:
         """
         Retrieve asset information (like name and ID) from SecurityMaster.
         """
+        # If self.asset is empty, retrieve info using SecurityMaster.get_asset
         if not self.asset:
             self.asset = SecurityMaster.get_asset(self.symbol)
 
@@ -60,7 +63,7 @@ class CompanyAnalyzer:
 # Example usage:
 if __name__ == "__main__":
     # Instantiate the CompanyAnalyzer with a symbol
-    analyzer = CompanyAnalyzer('AAPL')  # Example: Apple Inc.
+    analyzer = AssetAnalyzer('AAPL')  # Example: Apple Inc.
 
     # Retrieve and print various metrics
     print(f"Company Name: {analyzer.name()}")
