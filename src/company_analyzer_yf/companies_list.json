@@ -1,0 +1,866 @@
+[
+  {
+    "symbol": "AAPL",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "MSFT",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "GOOGL",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "AMZN",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "NVDA",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "META",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "TSLA",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "VVSM.DE",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "SPY",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "PANW",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "PLTR",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "SMCI",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "SHOP",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "INTC",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "UBER",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "AMD",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "FDX",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "IBM",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "ADBE",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "ORCL",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "AVGO",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "NFLX",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "PEP",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "KO",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "BAC",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "MRK",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "COST",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "JNJ",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "PG",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "MA",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "CRM",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "BRK.A",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "JPM",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "V",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "XOM",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "WMT",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "INTU",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "NOW",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "HD",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "T",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "VZ",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "CMCSA",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "DIS",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "HPQ",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "GLW",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "ARM",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "Acquired",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "005380.KS",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "9880.HK",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "BOTZ",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "ROBO",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "TTD",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "MDB",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "ANET",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "ABNB",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "CSCO",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "LRCX",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "AMAT",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "TXN",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "QCOM",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "BKNG",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "GM",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "F",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "STLA",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "ASML",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "SAP",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "SU.PA",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "ACN",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "DSY.PA",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "SPOT",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "ADYEN.AS",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "BASFY",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "RMS.PA",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "NSRGY",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "MC.PA",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "RHHBY",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "OR.PA",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "NVO",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "NVS",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "BABA",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "TCEHY",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "005930.KS",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "TSM",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "MPNGY",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "BIDU",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "JD",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "2222.SR",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "BMWYY",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "NSU.DE",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "RACE",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "VWAGY",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "POAHY",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "MBGYY",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "SHEL",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "IHC.AD",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  },
+  {
+    "symbol": "AZN",
+    "last_time_bought": "",
+    "quantity_bought": "",
+    "price_bought": "",
+    "last_time_sell": "",
+    "quantity_sell": "",
+    "price_sell": ""
+  }
+]
