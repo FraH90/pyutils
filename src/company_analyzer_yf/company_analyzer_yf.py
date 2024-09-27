@@ -153,7 +153,10 @@ class AssetMonitor:
     def print_data(self):
         """
         Print updated data rows.
+        Returns:
+        - int: number of lines printed
         """
+        lines_printed = 0
         for symbol, info in self.data.items():
             percent_change = info.get('percentChange')
             if isinstance(percent_change, (int, float)):
@@ -194,6 +197,10 @@ class AssetMonitor:
             ]
             
             print(' '.join(row))
+            lines_printed += 1
+
+        # Return the numbers of line printed, in order to know of how much many line we'll need to move the cursor
+        return lines_printed
 
 
     def move_cursor_up(self, lines):
@@ -214,10 +221,12 @@ class AssetMonitor:
         """
         try:
             self.print_header()  # Print header once
+            self.lines_printed = 0
             while True:
                 self.update_data()
-                self.move_cursor_up(len(self.symbols) + 2)  # Move cursor up to overwrite the old data
-                self.print_data()
+                if self.lines_printed > 0:
+                    self.move_cursor_up(self.lines_printed)  # Move cursor up to overwrite the old data
+                self.lines_printed = self.print_data()
                 logging.info("Summary printed.")
                 time.sleep(interval)
         except KeyboardInterrupt:
