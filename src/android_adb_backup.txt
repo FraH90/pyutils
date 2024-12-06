@@ -1,0 +1,82 @@
+import os
+import subprocess
+import sys
+
+# Constants
+DESTINATION_BASE = r"C:\AndroidBackups"  # Set your backup destination path here
+FOLDERS_TO_BACKUP = ["DCIM", "Download", "Movies", "Pictures"]
+
+def check_adb_connection():
+    result = subprocess.run(['adb', 'devices'], capture_output=True, text=True)
+    devices = [line.split()[0] for line in result.stdout.strip().split('\n')[1:] if line.strip()]
+    return devices
+
+def backup_folder(folder_name):
+    source_path = f"/sdcard/{folder_name}"
+    destination_path = os.path.join(DESTINATION_BASE, folder_name)
+    os.makedirs(destination_path, exist_ok=True)
+
+    print(f"Backing up {folder_name}...")
+    subprocess.run(['adb', 'pull', source_path, destination_path])
+
+def get_folder_size_and_count(device_path):
+    # Get size
+    size_command = f'du -s "{device_path}"'
+    size_result = subprocess.run(['adb', 'shell', size_command], capture_output=True, text=True)
+    size = int(size_result.stdout.strip().split()[0])
+
+    # Get file count
+    count_command = f'find "{device_path}" -type f | wc -l'
+    count_result = subprocess.run(['adb', 'shell', count_command], capture_output=True, text=True)
+    count = int(count_result.stdout.strip())
+
+    return size, count
+
+def get_local_folder_size_and_count(local_path):
+    total_size = 0
+    total_files = 0
+    for dirpath, dirnames, filenames in os.walk(local_path):
+        total_files += len(filenames)
+        for f in filenames:
+            fp = os.path.join(dirpath, f)
+            total_size += os.path.getsize(fp)
+    return total_size // 1024, total_files  # Convert size to KB to match 'du' output
+
+def delete_folder_on_device(folder_name):
+    source_path = f"/sdcard/{folder_name}"
+    delete_command = f'rm -r "{source_path}"'
+    subprocess.run(['adb', 'shell', delete_command])
+
+def main():
+    devices = check_adb_connection()
+    if not devices:
+        print("No devices connected.")
+        sys.exit(1)
+    else:
+        print(f"Connected device(s): {', '.join(devices)}")
+
+    for folder in FOLDERS_TO_BACKUP:
+        backup_folder(folder)
+        
+        # Compare sizes and counts
+        device_size, device_count = get_folder_size_and_count(f"/sdcard/{folder}")
+        local_size, local_count = get_local_folder_size_and_count(os.path.join(DESTINATION_BASE, folder))
+
+        print(f"Device folder '{folder}': Size = {device_size} KB, Files = {device_count}")
+        print(f"Local folder '{folder}': Size = {local_size} KB, Files = {local_count}")
+
+        size_diff = abs(device_size - local_size)
+        count_diff = abs(device_count - local_count)
+        
+        if size_diff <= 1 and count_diff == 0:
+            response = input(f"Do you want to delete '{folder}' from the device? (y/n): ")
+            if response.lower() == 'y':
+                delete_folder_on_device(folder)
+                print(f"Deleted '{folder}' from the device.")
+            else:
+                print(f"Skipped deletion of '{folder}'.")
+        else:
+            print(f"Size or file count mismatch for '{folder}'. Skipping deletion.")
+
+if __name__ == "__main__":
+    main()
